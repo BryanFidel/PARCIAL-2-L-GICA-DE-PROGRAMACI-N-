@@ -27,6 +27,30 @@ namespace punto1
 
                 Console.WriteLine($"Se ha escogido un número entre 0 y {maxRange}. Comencemos a adivinar!");
 
+                while (numberGuessed != randomNumber)
+                {
+                    for (int i = 1; i <= numPlayers; i++)
+                    {
+                        Console.Write($"Jugador {i}, ingrese un número: ");
+                        int guess = Convert.ToInt32(Console.ReadLine());
+
+                        if (guess < randomNumber)
+                        {
+                            Console.WriteLine("MAYOR");
+                        }
+                        else if (guess > randomNumber)
+                        {
+                            Console.WriteLine("MENOR");
+                        }
+                        else
+                        {
+                            Console.WriteLine("¡HAS GANADO!");
+                            numberGuessed = guess;
+                            break;
+                        }
+                    }
+                }
+
                 
             }
 
