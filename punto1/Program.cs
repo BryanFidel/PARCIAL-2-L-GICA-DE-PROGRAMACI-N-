@@ -51,7 +51,15 @@ namespace punto1
                     }
                 }
 
-                
+                Console.Write("¿Desea jugar de nuevo? (1 para sí, otro valor para no): ");
+                playAgain = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                if (playAgain != 1)
+                {
+                    break;
+                }
+                Console.Clear(); // esto limpia la consola para empeazr de nuevo
             }
 
             Console.WriteLine("Gracias por jugar Adivina el Número. ¡Hasta luego!");
