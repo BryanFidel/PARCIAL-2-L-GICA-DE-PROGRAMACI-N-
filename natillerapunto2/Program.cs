@@ -40,7 +40,45 @@ namespace natillerapunto2
                         ahorrosSocio2[i] = aporte;
                 }
 
-        
+                double totalAhorrosSocio1 = CalcularTotalAhorrosSocio(ahorrosSocio1);
+                double totalAhorrosSocio2 = CalcularTotalAhorrosSocio(ahorrosSocio2);
+                double interesesSocio1 = (prestamoSocio1 > 0) ? CalcularIntereses(prestamoSocio1, DateTime.Now.Month) : 0;
+                double interesesSocio2 = (prestamoSocio2 > 0) ? CalcularIntereses(prestamoSocio2, DateTime.Now.Month) : 0;
+                double totalIntereses = interesesSocio1 + interesesSocio2;
+                double totalMultas = MultaNoAporte * (multasSocio1 + multasSocio2);
+                double totalPrestamos = prestamoSocio1 + prestamoSocio2;
+                double valorNetoSocio1 = totalAhorrosSocio1 - prestamoSocio1 + interesesSocio1 - (multasSocio1 * MultaNoAporte);
+                double valorNetoSocio2 = totalAhorrosSocio2 - prestamoSocio2 + interesesSocio2 - (multasSocio2 * MultaNoAporte);
+                double valorNetoTotal = valorNetoSocio1 + valorNetoSocio2;
+
+                Console.WriteLine($"Total ahorros socio 1: ${totalAhorrosSocio1}");
+                Console.WriteLine($"Total ahorros socio 2: ${totalAhorrosSocio2}");
+                Console.WriteLine($"Total intereses generados: ${totalIntereses}");
+                Console.WriteLine($"Total multas pagadas: ${totalMultas}");
+                Console.WriteLine($"Total préstamos: ${totalPrestamos}");
+                Console.WriteLine($"Valor neto a liquidar a socio 1: ${valorNetoSocio1}");
+                Console.WriteLine($"Valor neto a liquidar a socio 2: ${valorNetoSocio2}");
+                Console.WriteLine($"Valor neto total a liquidar: ${valorNetoTotal}");
+            }
+
+            static double CalcularTotalAhorrosSocio(double[] ahorros)
+            {
+                double total = 0;
+                foreach (var ahorro in ahorros)
+                {
+                    total += ahorro;
+                }
+                return total;
+            }
+
+            static double CalcularIntereses(double prestamo, int mesInicio)
+            {
+                double intereses = 0;
+                for (int i = mesInicio; i <= 12; i++)
+                {
+                    intereses += prestamo * TasaInteresMensual;
+                }
+                return intereses;
             }
         }
     }
