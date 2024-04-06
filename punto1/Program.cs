@@ -20,7 +20,14 @@ namespace punto1
                     numPlayers = Convert.ToInt32(Console.ReadLine());
                 }
 
-               
+                maxRange = numPlayers * 50;
+
+                int randomNumber = random.Next(0, maxRange + 1);
+                int numberGuessed = -1;
+
+                Console.WriteLine($"Se ha escogido un número entre 0 y {maxRange}. Comencemos a adivinar!");
+
+                
             }
 
             Console.WriteLine("Gracias por jugar Adivina el Número. ¡Hasta luego!");
